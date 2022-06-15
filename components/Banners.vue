@@ -1,5 +1,5 @@
 <template>
-  <section class="banners grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-16 p-6">
+  <section class="banners grid grid-cols-1 sm:grid-cols-2 mlg:grid-cols-3 gap-6 mb-16 p-6">
     <div 
       v-for="banner in banners"
       :key="banner" 
