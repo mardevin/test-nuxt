@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-weak text-cyan-600 p-6">
+  <footer class="bg-weak text-cyan-600 text-center p-6">
     <Links />
     <Legal />
   </footer>
