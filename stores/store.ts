@@ -32,6 +32,6 @@ export const useStore = defineStore('store', {
   getters: {
     getProducts: (state) => state.products,
     getCartItems: (state) => state.cartItems,
-    getError: (state) =>  state.error,
+    getError: (state) => state.error,
   },
 })

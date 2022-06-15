@@ -6,13 +6,13 @@
       <FeaturedProduct v-for="product in featuredProducts" :key="product.id" :product="product" />
     </div>
 
-    <!-- <div class="view-all">
+    <div class="view-all text-center">
       <NuxtLink :to="featuredProductsRoute" class="text-normal text-xl font-bold">
           <span class="material-icons">arrow_right_alt</span>
         <br />
         <span>View All</span>
       </NuxtLink>
-    </div> -->
+    </div>
   </section>
 </template>
 
@@ -23,31 +23,8 @@ import { computed } from 'vue';
 const store = useStore();
 
 const featuredProductsRoute = computed(() => ({
-  name: 'featured-products',
+  name: 'FeaturedProducts',
 }))
 
-const featuredProducts = computed(() => store.$state.products.slice(0, 4));
-
-// const featuredProducts = [
-//   {
-//     id: 1,
-//     title: '1',
-//     price: 30,
-//   },
-//   {
-//     id: 2,
-//     title: '1',
-//     price: 30,
-//   },
-//   {
-//     id: 3,
-//     title: '1',
-//     price: 30,
-//   },
-//   {
-//     id: 4,
-//     title: '1',
-//     price: 30,
-//   },
-// ]
+const featuredProducts = computed(() => store.getProducts.slice(0, 4));
 </script>
