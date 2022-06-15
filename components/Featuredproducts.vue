@@ -7,7 +7,8 @@
     </div>
 
     <div class="view-all text-center">
-      <NuxtLink :to="featuredProductsRoute" class="text-normal text-xl font-bold">
+      <!-- <NuxtLink :to="featuredProductsRoute" class="text-normal text-xl font-bold"> -->
+      <NuxtLink to="/FeaturedProducts" class="text-normal text-xl font-bold">
           <span class="material-icons">arrow_right_alt</span>
         <br />
         <span>View All</span>

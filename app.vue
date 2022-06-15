@@ -7,25 +7,21 @@
 </template>
 
 <script setup>
-  import { useStore } from './stores/store';
-  import Navbar from '~/layouts/Navbar/Navbar.vue';
-  import Footer from '~/layouts/Footer/Footer.vue';
+import { useStore } from './stores/store';
+import Navbar from '~/layouts/Navbar/Navbar.vue';
+import Footer from '~/layouts/Footer/Footer.vue';
 
-  useHead({
-    link: [
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' }
-    ],
-  })
+useHead({
+  link: [
+    { rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' }
+  ],
+})
 
-  const store = useStore();
+const store = useStore();
 
-  onMounted(async () => await fetchProducts());
+const url = 'https://fakestoreapi.com/products';
 
-  async function fetchProducts() {
-    try {
-      await store.fetchProducts();
-    } catch {
-      console.log(store.error);
-    }
-  }
+const { data } = await useFetch(url);
+store.setProducts(data)
+
 </script>

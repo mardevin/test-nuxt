@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <main>
     <Hero />
     <Banners />
     <Featuredproducts />
-  </div>
+  </main>
 </template>

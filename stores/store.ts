@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { Actions } from './enums/actions';
-import axios from 'axios';
+import { Product, StoreState } from './types/types';
 
 export const useStore = defineStore('store', {
   state: () => {
@@ -8,22 +8,13 @@ export const useStore = defineStore('store', {
       products: [],
       cartItems: 0,
       error: '',
-    }
+    } as StoreState
   },
   actions: {
-    async [Actions.FETCH_PRODUCTS]() {
-      const url = 'https://fakestoreapi.com/products';
-
-      try {
-        const { data } = await axios.get(url);
-        this.$patch({
-          products: data
-        })
-      } catch (error) {
-        this.$patch({
-          error: error.response.data
-        })
-      }
+    async [Actions.SET_PRODUCTS](data: Product[]) {
+      this.$patch({
+        products: data
+      })
     },
     [Actions.ADD_TO_CART]() {
       this.cartItems++;
