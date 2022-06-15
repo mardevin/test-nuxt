@@ -1,6 +1,6 @@
 export type StoreState = {
   products: Product[];
-  cartItems: number;
+  cart: CartItem[];
   error: string;
 }
 
@@ -17,4 +17,9 @@ export type Product = {
 type Rating = {
   rate: number;
   count: number;
+}
+
+type CartItem = {
+  product: Product;
+  numberOfItems: number;
 }

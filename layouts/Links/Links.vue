@@ -10,5 +10,5 @@ import { computed } from 'vue';
 
 const store = useStore();
 
-const cartItems = computed(() => store.getCartItems);
+const cartItems = computed(() => store.getCart.length);
 </script>

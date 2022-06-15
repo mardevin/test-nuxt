@@ -9,8 +9,13 @@
       <div class="featured-product__info_price text-normal font-bold">$ {{ product.price }}</div>
     </div>
 
-    <div class="featured-product__call_to_action">
-      <button class="text-white bg-normal font-light py-2 px-6" @click="addToCart">Add to Cart</button>
+    <div class="featured-product__call_to_action text-right">
+      <button class="text-white bg-normal font-light mb py-2 px-3 rounded-full" @click="addToCart(product)">
+        <span class="material-icons">add</span>
+      </button>
+      <button class="text-normal font-light ml-3 py-2 px-3 rounded-full border border-3 border-normal" @click="removeFromCart(product)">
+        <span class="material-icons">remove</span>
+      </button>
     </div>
   </div>
 </template>
@@ -24,5 +29,6 @@ const props = defineProps({
   product: Object,
 });
 
-const addToCart = () => store.addToCart();
+const addToCart = (product) => store.addToCart(product);
+const removeFromCart = (product) => store.removeFromCart(product);
 </script>
