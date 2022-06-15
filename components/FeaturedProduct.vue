@@ -17,20 +17,12 @@
 
 <script setup>
 import { useStore } from '~/stores/store';
-import { computed } from 'vue';
 
 const store = useStore();
 
 const props = defineProps({
   product: Object,
 });
-
-const featuredProductRoute = computed(() => ({
-  name: 'FeaturedProduct',
-  params: {
-    productId: props.product.id,
-  }   
-}))
 
 const addToCart = () => store.addToCart();
 </script>
