@@ -9,25 +9,31 @@
       <div class="featured-product__info_price text-normal font-bold">$ {{ product.price }}</div>
     </div>
 
-    <div class="featured-product__call_to_action text-right">
-      <button class="text-white bg-normal font-light mb py-2 px-3 rounded-full" @click="addToCart(product)">
-        <span class="material-icons">add</span>
-      </button>
-      <button class="text-normal font-light ml-3 py-2 px-3 rounded-full border border-3 border-normal" @click="removeFromCart(product)">
-        <span class="material-icons">remove</span>
-      </button>
+    <div class="featured-product__call_to_action text-right flex justify-end items-center">
+      <span class="number-of-items text-2xl">{{ numberOfItems(product) }}</span>
+      <div class="buttons ml-3">
+        <button class="text-white bg-normal font-light block mb-3 py-2 px-3 rounded-full" @click="addToCart(product)">
+          <span class="material-icons">add</span>
+        </button>
+        <button class="text-normal font-light block py-2 px-3 rounded-full border border-3 border-normal" @click="removeFromCart(product)">
+          <span class="material-icons">remove</span>
+        </button>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
 import { useStore } from '~/stores/store';
+import { computed } from 'vue';
 
 const store = useStore();
 
 const props = defineProps({
   product: Object,
 });
+
+const numberOfItems = computed(() => store.getNumberOfCartItemsForAnItem);
 
 const addToCart = (product) => store.addToCart(product);
 const removeFromCart = (product) => store.removeFromCart(product);

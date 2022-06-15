@@ -14,6 +14,13 @@ export const useStore = defineStore('store', {
     getProducts: (state) => state.products,
     getCart: (state) => state.cart,
     getNumberOfCartItems: (state) => state.cart.reduce((acc, cartItem) => acc + cartItem.numberOfItems, 0),
+    getNumberOfCartItemsForAnItem: (state) => 
+      (item: Product) => {
+        const foundItem = state.cart.find((cartItem) => cartItem.product.id === item.id);
+
+        return foundItem ? foundItem.numberOfItems : 0;
+      }
+    ,
     getError: (state) => state.error,
   },
   actions: {
