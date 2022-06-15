@@ -12,14 +12,3 @@ const store = useStore();
 
 const cartItems = computed(() => store.getCartItems);
 </script>
-
-<script>
-export default {
-  name: 'links',
-  computed: {
-    cartItems() {
-      return this.$store.getters.cartItems;
-    },
-  },
-}
-</script>
