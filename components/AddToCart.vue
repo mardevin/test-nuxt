@@ -7,17 +7,19 @@
 
     <div class="quantity flex justify-between mb-2">
       <span>Quantity:</span>
-      <input type="number" name="quantity" id="quantity" v-model="quantity" class="border-2 w-1/2" />
+      <span class="number-of-items text-2xl">{{ numberOfItems(product) }}</span>
     </div>
 
-    <div class="color flex justify-between mb-4">
-      <span>Color:</span>
-      <select name="color" id="color" class="border-2">
-        <option v-for="option in colorOptions" :key="option" :value="option">{{ option }}</option>
-      </select>
+    <div class="quantity text-right flex justify-end items-center">
+      <div class="buttons ml-3">
+        <button class="text-white bg-normal font-light mb-3 py-2 px-3 rounded-full" @click="addToCart(product)">
+          <span class="material-icons">add</span>
+        </button>
+        <button class="text-normal font-light ml-3 py-2 px-3 rounded-full border border-3 border-normal" @click="removeFromCart(product)">
+          <span class="material-icons">remove</span>
+        </button>
+      </div>
     </div>
-
-    <button class="text-white bg-normal text-2xl font-bold block mb-2 py-2 px-3 rounded-lg" @click="addToCart">Add to Cart</button>
 
     <span class="font-medium text-left block">Share this</span>
   </div> 
@@ -25,7 +27,7 @@
 
 <script setup>
 import { useStore } from '~/stores/store';
-import { ref, computed } from 'vue';
+import { computed } from 'vue';
 
 const store = useStore();
 const route = useRoute();
@@ -34,10 +36,8 @@ const productId = computed(() => route.params.productId);
 const products = computed(() => store.getProducts);
 const product = computed(() => products.value.find((product) => product.id === Number(productId.value)));
 
-const quantity = ref(0);
-const colorOptions = ref(['Black', 'Orange', 'Green', 'Red', 'Blue']);
+const numberOfItems = computed(() => store.getNumberOfCartItemsForAnItem);
 
-function addToCart() {
-  store.addToCart();
-}
+const addToCart = (product) => store.addToCart(product);
+const removeFromCart = (product) => store.removeFromCart(product);
 </script>
