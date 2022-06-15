@@ -1,9 +1,7 @@
 <template>
-  <div>{{ msg }}</div>
+  <div>
+    <Hero />
+    <Banners />
+    <Featuredproducts />
+  </div>
 </template>
-
-<script setup>
-import { ref } from 'vue';
-
-const msg = ref('Home')
-</script>

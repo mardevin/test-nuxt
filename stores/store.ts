@@ -3,23 +3,12 @@ import { Actions } from './enums/actions';
 import axios from 'axios';
 
 export const useStore = defineStore('store', {
-  state() {
+  state: () => {
     return {
       products: [],
       cartItems: 0,
       error: '',
     }
-  },
-  getters: {
-    products(state) {
-      return state.products;
-    },
-    cartItems(state) {
-      return state.cartItems;
-    },
-    error(state) {
-      return state.error;
-    },
   },
   actions: {
     async [Actions.FETCH_PRODUCTS]() {
@@ -27,10 +16,22 @@ export const useStore = defineStore('store', {
 
       try {
         const { data } = await axios.get(url);
-        this.products = data;
+        this.$patch({
+          products: data
+        })
       } catch (error) {
-        this.error = error.response.data;
+        this.$patch({
+          error: error.response.data
+        })
       }
+    },
+    [Actions.ADD_TO_CART]() {
+      this.cartItems++;
     }
-  }
+  },
+  getters: {
+    getProducts: (state) => state.products,
+    getCartItems: (state) => state.cartItems,
+    getError: (state) =>  state.error,
+  },
 })
