@@ -12,8 +12,17 @@
     </div>
 
     <div class="featured-product__call_to_action text-right flex justify-end items-center">
-      <span class="number-of-items text-2xl">{{ numberOfItems(product) }}</span>
-      <button class="text-white bg-normal font-light py-2 px-6 ml-3" @click="addToCart(product)">Add to Cart</button>
+      <span class="number-of-items text-2xl">{{ numberOfItems }}</span>
+
+      <button v-if="!isItemInCart" class="text-white bg-normal font-light py-2 px-6 ml-3" @click="addToCart(product)">Add to Cart</button>
+      <div v-else class="buttons ml-3">
+        <button class="text-white bg-normal font-light py-2 px-3 rounded-full" @click="addToCart(product)">
+          <span class="material-icons">add</span>
+        </button>
+        <button class="text-normal font-light ml-3 py-2 px-3 rounded-full border border-3 border-normal" @click="removeFromCart(product)">
+          <span class="material-icons">remove</span>
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -28,7 +37,9 @@ const props = defineProps({
   product: Object,
 });
 
-const numberOfItems = computed(() => store.getNumberOfCartItemsForAnItem);
+const holder = store.getNumberOfCartItemsForAnItem;
+const numberOfItems = computed(() => holder(props.product));
+const isItemInCart = computed(() => numberOfItems.value > 0);
 
 const addToCart = (product) => store.addToCart(product);
 const removeFromCart = (product) => store.removeFromCart(product);
