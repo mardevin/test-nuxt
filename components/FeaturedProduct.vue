@@ -11,14 +11,7 @@
 
     <div class="featured-product__call_to_action text-right flex justify-end items-center">
       <span class="number-of-items text-2xl">{{ numberOfItems(product) }}</span>
-      <div class="buttons ml-3">
-        <button class="text-white bg-normal font-light block mb-3 py-2 px-3 rounded-full" @click="addToCart(product)">
-          <span class="material-icons">add</span>
-        </button>
-        <button class="text-normal font-light block py-2 px-3 rounded-full border border-3 border-normal" @click="removeFromCart(product)">
-          <span class="material-icons">remove</span>
-        </button>
-      </div>
+      <button class="text-white bg-normal font-light py-2 px-6 ml-3" @click="addToCart(product)">Add to Cart</button>
     </div>
   </div>
 </template>
