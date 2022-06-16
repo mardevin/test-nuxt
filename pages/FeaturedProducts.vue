@@ -1,10 +1,9 @@
 <template>
   <main>
-
     <Category />
     
     <section class="flex flex-col lg:flex-row md:justify-between mb-9 p-6">
-      <aside class="lg:w-60 lg:mr-3 mb-3">
+      <aside class="lg:w-60 lg:mr-6 mb-6">
         <h3 class="text-normal bg-weak text-left mb-3 py-1 px-2">FILTERS</h3>
         <div class="min-price md:inline-block mr-3">
           <label for="min-price">Min price</label>
@@ -21,7 +20,7 @@
         </div>
       </aside>
 
-      <div class="featured-products flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ml-3">
+      <div class="featured-products flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <FeaturedProduct v-for="product in filteredProducts" :key="product.id" :product="product" />
       </div>
     </section>
