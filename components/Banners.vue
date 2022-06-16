@@ -1,5 +1,6 @@
 <template>
   <section class="banners grid grid-cols-1 sm:grid-cols-2 mlg:grid-cols-3 gap-6 mb-16 p-6">
+    test
     <div 
       v-for="banner in banners"
       :key="banner" 
