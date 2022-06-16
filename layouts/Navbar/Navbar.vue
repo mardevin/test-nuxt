@@ -1,8 +1,8 @@
 <template>
   <header class="p-6">
-    <div class="search text-right">
+    <!-- <div class="search text-right">
       <input type="search" name="search" id="search" class="hidden mlg:inline-block mlg:mb-2 border-2 border-blue-400" />
-    </div>
+    </div> -->
     <div class="header-nav flex justify-between items-center">
       <div class="logo text-weak text-2xl md:text-5xl flex items-center">
           <span class="material-icons text-5xl mr-2">sports_baseball</span>
@@ -18,14 +18,13 @@
           <li class="inline mx-3">
             <span class="material-icons">home</span>
           </li>
-          <li class="inline mx-3">HOME</li>
-          <li class="inline mx-3">CUPS</li>
-          <li class="inline mx-3">SPOONS</li>
-          <li class="inline mx-3">LIDS</li>
-          <li class="inline mx-3">ACCESSORIES</li>
-          <li class="inline mx-3">MARKETING</li>
+          <li class="inline mx-3">CATEGORIES</li>
+          <li class="inline mx-3">
+            <span class="material-icons">shopping_cart</span>
+          </li>
         </ul>
       </nav>
+      <input type="search" name="search" id="search" class="hidden mlg:inline-block mlg:mb-2 border-2 border-blue-400" />
     </div>
   </header>
 
@@ -34,15 +33,13 @@
       <input type="search" name="search" id="search" class="mb-2 border-2 border-normal" />
     </div>
     <ul class="text-normal mb-2">
-      <li class="inline mx-3">
+      <li>
         <span class="material-icons">home</span>
       </li>
-      <li>HOME</li>
-      <li>CUPS</li>
-      <li>SPOONS</li>
-      <li>LIDS</li>
-      <li>ACCESSORIES</li>
-      <li>MARKETING</li>
+      <li>CATEGORIES</li>
+      <li>
+        <span class="material-icons">shopping_cart</span>
+      </li>
     </ul>
   </nav>
 </template>
