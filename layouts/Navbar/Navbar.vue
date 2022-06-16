@@ -2,11 +2,14 @@
   <header class="fixed w-full">
     <div class="header-nav bg-white">
       <div class="flex justify-between items-center p-3">
-        <div class="logo text-weak text-2xl md:text-5xl flex items-center">
+        <div class="logo text-weak text-2xl md:text-5xl">
+          <NuxtLink to="/" class="flex items-center">
             <span class="material-icons text-5xl mr-2">sports_baseball</span>
-          <div>
-            InterGreen 
-          </div>
+            <div>
+              InterGreen 
+            </div>
+            
+          </NuxtLink>
         </div>
         <div class="hamburger-menu mlg:hidden" @click="toggleShowDropdownMenu">
           <span class="material-icons text-5xl mr-2">menu</span>
@@ -14,9 +17,13 @@
         <nav class="hidden mlg:block">
           <ul class="text-normal">
             <li class="inline mx-3">
-              <span class="material-icons">home</span>
+              <NuxtLink to="/">
+                <span class="material-icons">home</span>
+              </NuxtLink>
             </li>
-            <li class="inline mx-3">ALL PRODUCTS</li>
+            <li class="inline mx-3">
+              <NuxtLink to="/FeaturedProducts">ALL PRODUCTS</NuxtLink>
+            </li>
             <li class="inline mx-3 relative">
               <span class="material-icons">
                 shopping_cart
@@ -35,9 +42,13 @@
         </div>
         <ul class="text-normal mb-2">
           <li>
-            <span class="material-icons">home</span>
+            <NuxtLink to="/">
+              <span class="material-icons">home</span>
+            </NuxtLink>
           </li>
-          <li>ALL PRODUCTS</li>
+          <li>
+            <NuxtLink to="/FeaturedProducts">ALL PRODUCTS</NuxtLink>
+          </li>
           <li class="text-center">
             <div class="inline-block relative">
               <span class="material-icons block">
