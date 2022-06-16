@@ -6,16 +6,16 @@
     <section class="flex flex-col lg:flex-row md:justify-between mb-9 p-6">
       <aside class="lg:w-60 lg:mr-3 mb-3">
         <h3 class="text-normal bg-weak text-left mb-3 py-1 px-2">FILTERS</h3>
-        <div class="min-price">
+        <div class="min-price md:inline-block mr-3">
           <label for="min-price">Min price</label>
           <input type="number" name="min-price" id="min-price" class="block mt-1 pl-1 border border-black" v-model="minPrice" />
         </div>
 
-        <div class="max-price">
+        <div class="max-price md:inline-block mr-3">
           <label for="max-price">Max price</label>
           <input type="number" name="max-price" id="max-price" class="block mt-1 pl-1 border border-black" v-model="maxPrice" />
         </div>
-        <div class="title">
+        <div class="title md:inline-block mr-3">
           <label for="title">Title</label>
           <input type="text" name="title" id="title" class="block mt-1 pl-1 border border-black" v-model="title" />
         </div>
