@@ -1,15 +1,11 @@
 <template>
-  <Links />
   <Navbar />
-  
   <NuxtPage />
-
   <Footer />
 </template>
 
 <script setup>
 import { useStore } from './stores/store';
-import Links from '~/layouts/Links/Links.vue';
 import Navbar from '~/layouts/Navbar/Navbar.vue';
 import Footer from '~/layouts/Footer/Footer.vue';
 
