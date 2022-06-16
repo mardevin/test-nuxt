@@ -16,7 +16,7 @@
             <li class="inline mx-3">
               <span class="material-icons">home</span>
             </li>
-            <li class="inline mx-3">CATEGORIES</li>
+            <li class="inline mx-3">ALL PRODUCTS</li>
             <li class="inline mx-3 relative">
               <span class="material-icons">
                 shopping_cart
@@ -37,7 +37,7 @@
           <li>
             <span class="material-icons">home</span>
           </li>
-          <li>CATEGORIES</li>
+          <li>ALL PRODUCTS</li>
           <li class="text-center">
             <div class="inline-block relative">
               <span class="material-icons block">

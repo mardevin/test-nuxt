@@ -19,25 +19,19 @@
           <label for="title">Title</label>
           <input type="text" name="title" id="title" class="block mt-1 pl-1 border border-black" v-model="title" />
         </div>
-
-        <!-- <ul>
-          <li class="text-normal text-left sm:inline-block lg:my-1 px-2 lg:block">Option One</li>
-          <li class="text-normal text-left sm:inline-block lg:my-1 px-2 lg:block">Option One</li>
-          <li class="text-normal text-left sm:inline-block lg:my-1 px-2 lg:block">Option One</li>
-          <li class="text-normal text-left sm:inline-block lg:my-1 px-2 lg:block">Option One</li>
-        </ul> -->
       </aside>
 
       <div class="featured-products flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ml-3">
-        <FeaturedProduct v-for="product in featuredProducts" :key="product.id" :product="product" />
+        <FeaturedProduct v-for="product in filteredProducts" :key="product.id" :product="product" />
       </div>
     </section>
   </main>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { useStore } from '~/stores/store';
 import { ref, computed } from 'vue';
+import { Product } from '~~/stores/types/types';
 
 const store = useStore();
 
@@ -46,4 +40,22 @@ const maxPrice = ref(0);
 const title = ref('');
 
 const featuredProducts = computed(() => store.getProducts.slice(0, 9));
+const filteredProducts = computed(() => featuredProducts.value.filter((product) => doesRespondToFiltersCriterias(product)));
+
+function doesRespondToFiltersCriterias(product: Product) {
+  return isPriceBiggerThanMinPrice(product) && isPriceSmallerThanMaxPrice(product) && containsTextWithinTitle(product);
+}
+
+function isPriceBiggerThanMinPrice(product: Product) {
+  return minPrice.value === 0 || product.price >= minPrice.value;
+}
+
+function isPriceSmallerThanMaxPrice(product: Product) {
+  return maxPrice.value === 0 || product.price <= maxPrice.value;
+}
+
+function containsTextWithinTitle(product: Product) {
+  const titleRegExp = new RegExp(title.value, 'gi');
+  return titleRegExp.test(product.title);
+}
 </script>
