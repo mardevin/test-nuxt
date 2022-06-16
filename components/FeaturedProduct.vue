@@ -2,7 +2,7 @@
   <div class="featured-product p-3 border-2 border-normal rounded-lg">
     <div class="featured-product__picture overflow-hidden w-full h-64">
       <NuxtLink :to="`/FeaturedProduct/${product.id}`">
-        <img :src="product.image" :alt="product.title" class="cursor-pointer" />
+        <img :src="product.image" :alt="product.title" class="cursor-pointer w-full h-full" />
       </NuxtLink>
     </div>
 
