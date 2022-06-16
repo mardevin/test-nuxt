@@ -1,11 +1,13 @@
 <template>
   <div class="featured-product p-3 border-2 border-normal rounded-lg">
     <div class="featured-product__picture overflow-hidden w-full h-64">
-      <img :src="product.image" :alt="product.title" />
+      <NuxtLink :to="`/FeaturedProduct/${product.id}`">
+        <img :src="product.image" :alt="product.title" class="cursor-pointer" />
+      </NuxtLink>
     </div>
 
     <div class="featured-product__info flex justify-between py-3">
-      <NuxtLink :to="`/FeaturedProduct/${product.id}`" class="featured-product__info_name text-normal text-left w-3/5">{{ product.title.slice(0, 18) }}...</NuxtLink>
+      <NuxtLink :to="`/FeaturedProduct/${product.id}`" class="featured-product__info_name text-normal text-left w-3/5 cursor-pointer">{{ product.title.slice(0, 18) }}...</NuxtLink>
       <div class="featured-product__info_price text-normal font-bold">$ {{ product.price }}</div>
     </div>
 
