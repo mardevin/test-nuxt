@@ -69,7 +69,7 @@ const categories = [
   "lighting"
 ];
 
-const featuredProducts = computed(() => store.getProducts.slice(0, 9));
+const featuredProducts = computed(() => store.getProducts);
 const filteredProducts = computed(() => featuredProducts.value.filter((product) => doesRespondToFiltersCriterias(product)));
 
 function doesRespondToFiltersCriterias(product: Product) {
