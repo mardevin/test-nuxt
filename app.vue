@@ -8,6 +8,7 @@
 import { useStore } from './stores/store';
 import Navbar from '~/layouts/Navbar/Navbar.vue';
 import Footer from '~/layouts/Footer/Footer.vue';
+import axios from 'axios';
 
 useHead({
   link: [
@@ -17,9 +18,9 @@ useHead({
 
 const store = useStore();
 
-const url = 'https://fakestoreapi.com/products';
+const url = 'https://dummyjson.com/products';
 
 const { data } = await useFetch(url);
-store.setProducts(data)
+store.setProducts(data._rawValue.products);
 
 </script>

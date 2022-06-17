@@ -7,11 +7,15 @@ export type StoreState = {
 export type Product = {
   id: number;
   title: string;
-  image: string;
+  thumbnail: string;
+  images: string;
   description: string;
   category: string;
   price: number;
-  rating: Rating;
+  discountPercentage: number;
+  rating: number;
+  stock: number;
+  brand: string;
 }
 
 type Rating = {

@@ -1,13 +1,12 @@
 <template>
   <div class="pictures mlg:w-1/2 mb-6">
     <div class="main-picture overflow-hidden w-full h-72 mb-6">
-      <img :src="product.image" :alt="product.title" />
+      <img :src="product.thumbnail" :alt="product.title" class="w-full h-full" />
     </div>
     <div class="other-pictures grid grid-cols-4 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div class="picture bg-weak h-16 sm:h-32"></div>
-      <div class="picture bg-weak h-16 sm:h-32"></div>
-      <div class="picture bg-weak h-16 sm:h-32"></div>
-      <div class="picture bg-weak h-16 sm:h-32"></div>
+      <div v-for="image in product.images" :key="image" class="picture h-16 sm:h-32">
+        <img :src="image" class="w-full h-full" />
+      </div>
     </div>
   </div> 
 </template>
@@ -23,4 +22,5 @@ const route = useRoute();
 const productId = computed(() => route.params.productId);
 const products = computed(() => store.getProducts);
 const product = computed(() => products.value.find((product) => product.id === Number(productId.value)));
+// const mainImage = product.value.
 </script>
