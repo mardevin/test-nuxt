@@ -1,5 +1,5 @@
 <template>
-  <header class="fixed w-full">
+  <header class="fixed top-0 w-full">
     <div class="header-nav bg-white">
       <div class="flex justify-between items-center p-3">
         <div class="logo text-weak text-2xl md:text-5xl">
@@ -25,10 +25,12 @@
               <NuxtLink to="/FeaturedProducts">ALL PRODUCTS</NuxtLink>
             </li>
             <li class="inline mx-3 relative">
-              <span class="material-icons">
-                shopping_cart
-              </span>
-              <div v-if="!isCartEmpty" class="bg-red-500 absolute right-0.5 bottom-0.5 w-2 h-2 rounded-full"></div>
+              <NuxtLink to="/Cart">
+                <span class="material-icons">
+                  shopping_cart
+                </span>
+                <div v-if="!isCartEmpty" class="bg-red-500 absolute right-0.5 bottom-0.5 w-2 h-2 rounded-full"></div>
+              </NuxtLink>
             </li>
             <li v-if="!isCartEmpty" class="text-strong font-bold bg-weak text-center inline mx-3">{{ cartItems }} items</li>
           </ul>
@@ -51,10 +53,12 @@
           </li>
           <li class="text-center">
             <div class="inline-block relative">
-              <span class="material-icons block">
-                shopping_cart
-              </span>
-              <div v-if="!isCartEmpty" class="bg-red-500 absolute right-0.5 bottom-0.5 w-2 h-2 rounded-full"></div>
+              <NuxtLink to="/Cart">
+                <span class="material-icons block">
+                  shopping_cart
+                </span>
+                <div v-if="!isCartEmpty" class="bg-red-500 absolute right-0.5 bottom-0.5 w-2 h-2 rounded-full"></div>
+              </NuxtLink>
             </div>
           </li>
           <li v-if="!isCartEmpty" class="text-strong font-bold bg-weak text-center inline mx-3">{{ cartItems }} items</li>
