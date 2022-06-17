@@ -10,7 +10,7 @@ export type Product = {
   thumbnail: string;
   images: string;
   description: string;
-  category: string;
+  category: Category;
   price: number;
   discountPercentage: number;
   rating: number;
@@ -18,10 +18,27 @@ export type Product = {
   brand: string;
 }
 
-type Rating = {
-  rate: number;
-  count: number;
-}
+type Category =
+  "smartphones"|
+  "laptops"|
+  "fragrances"|
+  "skincare"|
+  "groceries"|
+  "home-decoration"|
+  "furniture"|
+  "tops"|
+  "womens-dresses"|
+  "womens-shoes"|
+  "mens-shirts"|
+  "mens-shoes"|
+  "mens-watches"|
+  "womens-watches"|
+  "womens-bags"|
+  "womens-jewellery"|
+  "sunglasses"|
+  "automotive"|
+  "motorcycle"|
+  "lighting" ;
 
 type CartItem = {
   product: Product;

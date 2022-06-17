@@ -22,5 +22,4 @@ const route = useRoute();
 const productId = computed(() => route.params.productId);
 const products = computed(() => store.getProducts);
 const product = computed(() => products.value.find((product) => product.id === Number(productId.value)));
-// const mainImage = product.value.
 </script>
