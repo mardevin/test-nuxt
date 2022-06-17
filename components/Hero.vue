@@ -4,7 +4,9 @@
   <section class="carousel-container relative max-w-full mx-auto mb-12 p-6">
     <div v-for="slide in slides" :key="slide" class="carousel">
       <div v-show="slide === activeSlide" class="bg-weak flex flex-col md:flex-row md:justify-between">
-        <div class="picture hidden md:block md:w-1/2"></div>
+        <div class="picture hidden md:block md:w-1/2 h-72">
+          <img :src="image" class="w-full h-full" /> 
+        </div>
         <div class="description md:text-right py-10 px-6">
           <h1 class="text-normal text-3xl sm:text-6xl font-bold mb-8">{{ slide }} Suspendisse interdum rutrum nise.</h1>
           <p class="text-normal text-2xl">Ut tellus quam, venenatis non tempus vitae, volupat blandit libero eget elos</p>
@@ -41,8 +43,22 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+import photo1 from '@/assets/images/photo-1.jpg';
+import photo2 from '@/assets/images/photo-2.jpg';
+import photo3 from '@/assets/images/photo-3.jpg';
 
 const activeSlide = ref(1);
 const slides = ref([1, 2, 3]);
+
+const image = computed(() => {
+  switch(activeSlide.value) {
+    case 1:
+      return photo1;
+    case 2:
+      return photo2;
+    case 3:
+      return photo3;
+  }
+})
 </script>
