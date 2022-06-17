@@ -18,6 +18,12 @@
           <label for="title">Title</label>
           <input type="text" name="title" id="title" class="block mt-1 pl-1 border border-black" v-model="title" />
         </div>
+        <div class="category md:inline-block mr-3">
+          <label for="category">Category</label>
+          <select name="category" id="category" class="block mt-1 pl-1 border border-black" v-model="category">
+            <option v-for="category in categories" :key="category">{{ category }}</option>
+          </select>
+        </div>
       </aside>
 
       <div class="featured-products flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -37,12 +43,40 @@ const store = useStore();
 const minPrice = ref(0);
 const maxPrice = ref(0);
 const title = ref('');
+const category = ref('all');
+
+const categories = [
+  "all",
+  "smartphones",
+  "laptops",
+  "fragrances",
+  "skincare",
+  "groceries",
+  "home-decoration",
+  "furniture",
+  "tops",
+  "womens-dresses",
+  "womens-shoes",
+  "mens-shirts",
+  "mens-shoes",
+  "mens-watches",
+  "womens-watches",
+  "womens-bags",
+  "womens-jewellery",
+  "sunglasses",
+  "automotive",
+  "motorcycle",
+  "lighting"
+];
 
 const featuredProducts = computed(() => store.getProducts.slice(0, 9));
 const filteredProducts = computed(() => featuredProducts.value.filter((product) => doesRespondToFiltersCriterias(product)));
 
 function doesRespondToFiltersCriterias(product: Product) {
-  return isPriceBiggerThanMinPrice(product) && isPriceSmallerThanMaxPrice(product) && containsTextWithinTitle(product);
+  return isPriceBiggerThanMinPrice(product) 
+  && isPriceSmallerThanMaxPrice(product) 
+  && containsTextWithinTitle(product)
+  && belongsToCategory(product);
 }
 
 function isPriceBiggerThanMinPrice(product: Product) {
@@ -56,5 +90,9 @@ function isPriceSmallerThanMaxPrice(product: Product) {
 function containsTextWithinTitle(product: Product) {
   const titleRegExp = new RegExp(title.value, 'gi');
   return titleRegExp.test(product.title);
+}
+
+function belongsToCategory(product: Product) {
+  return category.value === 'all' || product.category === category.value;
 }
 </script>
