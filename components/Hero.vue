@@ -30,7 +30,10 @@
       <span 
         v-for="slide in slides" 
         :key="slide" 
-        class="dot bg-gray-400 inline-block w-2 h-2 my-0 mx-2 rounded-full cursor-pointer"
+        class="dot bg-weak hover:bg-normal inline-block w-3 h-3 my-0 mx-2 rounded-full cursor-pointer"
+        :class="{
+          'bg-strong': activeSlide === slide
+        }"
         @click="activeSlide = slide"
       ></span>
     </div>
