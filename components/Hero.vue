@@ -28,7 +28,7 @@
       </div>
     </div> -->
 
-    <div class="dots text-center">
+    <div class="dots text-center mt-6">
       <span 
         v-for="slide in slides" 
         :key="slide" 
