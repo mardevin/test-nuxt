@@ -3,7 +3,7 @@
     <div v-for="slide in slides" :key="slide" class="carousel">
       <div v-show="slide === activeSlide" class="bg-weak flex flex-col lg:flex-row lg:justify-between lg:items-center">
         <div class="picture hidden lg:flex lg:justify-center lg:items-center lg:min-w-[50%] min-h-[24rem]">
-          <img :src="image" class="mx-auto w-full h-full object-contain" /> 
+          <img :src="image" class="mx-auto w-full object-contain" /> 
         </div>
         <div class="description lg:text-right py-10 px-6">
           <h1 class="text-normal text-3xl sm:text-6xl font-bold mb-8">{{ slide }} Suspendisse interdum rutrum nise.</h1>

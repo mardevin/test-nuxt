@@ -1,10 +1,10 @@
 <template>
   <div class="pictures mlg:w-1/2 mb-6">
     <div class="main-picture overflow-hidden w-full h-72 mb-6">
-      <img :src="product.thumbnail" :alt="product.title" class="w-full h-full" />
+      <img :src="product.thumbnail" :alt="product.title" class="w-full h-full object-contain" />
     </div>
-    <div class="other-pictures grid grid-cols-4 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div v-for="image in product.images" :key="image" class="picture h-16 sm:h-32">
+    <div class="other-pictures grid grid-cols-4 sm:grid-cols-2 md:grid-cols-4 gap-6">
+      <div v-for="image in product.images" :key="image" class="picture object-contain">
         <img :src="image" class="w-full h-full" />
       </div>
     </div>
