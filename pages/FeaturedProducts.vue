@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="max-w-screen-xl mx-auto">
     <Category />
     
     <section class="flex flex-col lg:flex-row md:justify-between mb-9 p-6">

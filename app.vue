@@ -8,7 +8,6 @@
 import { useStore } from './stores/store';
 import Navbar from '~/layouts/Navbar/Navbar.vue';
 import Footer from '~/layouts/Footer/Footer.vue';
-import axios from 'axios';
 
 useHead({
   link: [

@@ -51,6 +51,9 @@ export const useStore = defineStore('store', {
 
         return false;
       })
+    },
+    [Actions.REMOVE_PRODUCT_FROM_CART](product: Product) {
+      this.cart = this.cart.filter((cartItem) => cartItem.product.id !== product.id);
     }
   },
 })

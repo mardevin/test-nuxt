@@ -1,6 +1,4 @@
 <template>
-
-  <!-- Carousel work-in-progress -->
   <section class="carousel-container relative max-w-full mx-auto mb-12 p-6">
     <div v-for="slide in slides" :key="slide" class="carousel">
       <div v-show="slide === activeSlide" class="bg-weak flex flex-col md:flex-row md:justify-between md:items-center">

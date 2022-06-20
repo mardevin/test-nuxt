@@ -1,7 +1,7 @@
 <template>
-  <header class="fixed top-0 w-full z-10">
-    <div class="header-nav bg-white">
-      <div class="flex justify-between items-center p-3">
+  <header class="fixed top-0 w-full z-10 shadow-lg">
+    <div class="max-w-screen-xl mx-auto header-nav bg-white">
+      <div class="flex justify-between items-center py-3 px-6">
         <div class="logo text-weak text-2xl md:text-5xl">
           <NuxtLink to="/" class="flex items-center">
             <span class="material-icons text-5xl mr-2">sports_baseball</span>
