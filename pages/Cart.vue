@@ -13,7 +13,7 @@
         <CartItem v-for="cartItem in cart" :key="cartItem.product.id" :product="cartItem.product" />
       </div>
 
-      <div class="cart-summary bg-gray-100 grow-[1] ml-3 p-6 rounded-xl">
+      <div class="cart-summary bg-gray-100 grow-[1] ml-3 p-6 rounded-lg">
         <h1>CART SUMMARY</h1>
         <hr class="bg-strong my-2" />
         <div class="subtotal flex justify-between mb-3">
