@@ -12,11 +12,11 @@
 
     <div class="quantity text-right flex justify-end items-center">
       <div class="buttons ml-3">
-        <button class="text-white bg-normal font-light mb-3 py-2 px-3 rounded-full" @click="addToCart(product)">
-          <span class="material-icons">add</span>
+        <button class="text-white bg-normal font-light mb-3 p-3 rounded-full" @click="addToCart(product)">
+          <AddIcon />
         </button>
-        <button class="text-normal font-light ml-3 py-2 px-3 rounded-full border border-3 border-normal" @click="removeFromCart(product)">
-          <span class="material-icons">remove</span>
+        <button class="text-normal font-light ml-3 p-3 rounded-full border border-3 border-normal" @click="removeFromCart(product)">
+          <RemoveIcon />
         </button>
       </div>
     </div>
@@ -28,6 +28,8 @@
 <script setup>
 import { useStore } from '~/stores/store';
 import { computed } from 'vue';
+import AddIcon from '~/assets/icons/add.svg';
+import RemoveIcon from '~/assets/icons/remove.svg';
 
 const store = useStore();
 const route = useRoute();
