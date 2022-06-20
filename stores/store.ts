@@ -21,6 +21,7 @@ export const useStore = defineStore('store', {
         return foundItem ? foundItem.numberOfItems : 0;
       }
     ,
+    getTotalPriceForCartItems: (state) => state.cart.reduce((acc, cartItem) => acc + (cartItem.product.price * cartItem.numberOfItems), 0),
     getError: (state) => state.error,
   },
   actions: {
