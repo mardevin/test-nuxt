@@ -16,11 +16,14 @@
       <span 
         v-for="slide in slides" 
         :key="slide" 
+        tabindex="0"
         class="dot bg-weak hover:bg-normal inline-block w-3 h-3 my-0 mx-2 rounded-full cursor-pointer"
         :class="{
           'bg-strong': activeSlide === slide
         }"
         @click="activeSlide = slide"
+        @keypress.enter="activeSlide = slide"
+        @keypress.space.prevent="activeSlide = slide"
       ></span>
     </div>
   </section>
@@ -44,5 +47,5 @@ const image = computed(() => {
     case 3:
       return photo3;
   }
-})
+});
 </script>
