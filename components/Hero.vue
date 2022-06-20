@@ -3,9 +3,9 @@
   <!-- Carousel work-in-progress -->
   <section class="carousel-container relative max-w-full mx-auto mb-12 p-6">
     <div v-for="slide in slides" :key="slide" class="carousel">
-      <div v-show="slide === activeSlide" class="bg-weak flex flex-col md:flex-row md:justify-between">
-        <div class="picture hidden md:block md:w-1/2 h-72">
-          <img :src="image" class="w-full h-full" /> 
+      <div v-show="slide === activeSlide" class="bg-weak flex flex-col md:flex-row md:justify-between md:items-center">
+        <div class="picture bg-green-500 hidden md:block md:min-w-[50%] min-h-[24rem]">
+          <img :src="image" class="mx-auto w-full h-full object-contain" /> 
         </div>
         <div class="description md:text-right py-10 px-6">
           <h1 class="text-normal text-3xl sm:text-6xl font-bold mb-8">{{ slide }} Suspendisse interdum rutrum nise.</h1>
