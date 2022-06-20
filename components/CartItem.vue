@@ -5,7 +5,7 @@
         <div class="cart-item-image w-16 h-16 mr-3">
           <img :src="product.thumbnail" :alt="product.title" class="w-full h-full" />
         </div>
-        <div class="cart-item main md:flex md:justify-between w-full">
+        <div class="cart-item main flex justify-between w-full">
           <div class="cart-item-general">
             <h1 class="cart-item-title mb-1">
               {{ product.title }}

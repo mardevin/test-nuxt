@@ -12,7 +12,6 @@
           </NuxtLink>
         </div>
         <div class="hamburger-menu mlg:hidden" @click="toggleShowDropdownMenu">
-          <!-- <span class="material-icons text-5xl mr-2">menu</span> -->
           <MenuIcon />
         </div>
         <nav class="hidden mlg:block">

@@ -5,15 +5,12 @@
       Your cart is currently empty. &nbsp; <NuxtLink to="FeaturedProducts" class="text-blue-600">Go add some products</NuxtLink>.
     </div>
 
-    <div v-else class="flex items-start">
-      <!-- <div class="grid grid-cols-1 sm:grid-cols-2 mlg:grid-cols-4 gap-6 mb-6">
-        <FeaturedProduct v-for="cartItem in cart" :key="cartItem.product.id" :product="cartItem.product" />
-      </div> -->
-      <div class="cart-items grow-[4] mr-3">
+    <div v-else class="md:flex md:items-start">
+      <div class="cart-items md:grow-[4] md:mr-3">
         <CartItem v-for="cartItem in cart" :key="cartItem.product.id" :product="cartItem.product" />
       </div>
 
-      <div class="cart-summary bg-gray-100 grow-[1] ml-3 p-6 rounded-lg">
+      <div class="cart-summary bg-gray-100 md:grow-[1] md:ml-3 p-6 rounded-lg">
         <h1>CART SUMMARY</h1>
         <hr class="bg-strong my-2" />
         <div class="subtotal flex justify-between mb-3">
