@@ -37,4 +37,12 @@ const cartItems = computed(() => store.getNumberOfCartItems);
 const isCartEmpty = computed(() => cartItems.value === 0);
 
 const subtotal = computed(() => store.getTotalPriceForCartItems);
+
+useHead({
+  title: 'Cart',
+  meta: [
+    { name: 'keywords', content: 'product, e-commerce'},
+    { name: 'description', content: 'Check your cart before checkout'},
+  ],
+})
 </script>

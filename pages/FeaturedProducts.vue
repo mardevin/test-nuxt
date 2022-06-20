@@ -95,4 +95,12 @@ function containsTextWithinTitle(product: Product) {
 function belongsToCategory(product: Product) {
   return category.value === 'all' || product.category === category.value;
 }
+
+useHead({
+  title: 'Featured products',
+  meta: [
+    { name: 'keywords', content: 'product, e-commerce'},
+    { name: 'description', content: 'All featured products are awesome' },
+  ],
+})
 </script>
