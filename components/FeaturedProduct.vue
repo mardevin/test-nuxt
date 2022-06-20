@@ -7,7 +7,7 @@
     </div>
 
     <div class="featured-product__info flex justify-between py-3">
-      <NuxtLink :to="`/FeaturedProduct/${product.id}`" class="featured-product__info_name text-normal text-left w-3/5 cursor-pointer">{{ product.title.slice(0, 17) }}...</NuxtLink>
+      <NuxtLink :to="`/FeaturedProduct/${product.id}`" class="featured-product__info_name text-normal text-left w-3/5 cursor-pointer">{{ productTitle }}</NuxtLink>
       <div class="featured-product__info_price text-normal font-bold">$ {{ product.price }}</div>
     </div>
 
@@ -38,6 +38,10 @@ const store = useStore();
 const props = defineProps({
   product: Object,
 });
+
+const title = computed(() => props.product.title)
+
+const productTitle = computed(() => title.value.length > 16 ? title.value.slice(0, 17) + '...' : title.value );
 
 const holder = store.getNumberOfCartItemsForAnItem;
 const numberOfItems = computed(() => holder(props.product));
