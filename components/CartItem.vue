@@ -3,12 +3,14 @@
     <div class="cart-item-container mb-3">
       <div class="cart-item-info flex">
         <div class="cart-item-image w-16 h-16 mr-3">
-          <img :src="product.thumbnail" :alt="product.title" class="w-full h-full" />
+            <NuxtLink :to="`/FeaturedProduct/${product.id}`">
+              <img :src="product.thumbnail" :alt="product.title" class="w-full h-full" />
+            </NuxtLink>
         </div>
         <div class="cart-item main flex justify-between w-full">
           <div class="cart-item-general">
             <h1 class="cart-item-title mb-1">
-              {{ product.title }}
+              <NuxtLink :to="`/FeaturedProduct/${product.id}`">{{ product.title }}</NuxtLink>
             </h1>
             <div class="cart-item-brand text-sm">
               <span class="text-gray-400">Brand: </span> {{ product.brand }}
