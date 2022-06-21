@@ -3,7 +3,7 @@
     <div 
       v-for="banner in banners"
       :key="banner" 
-      class="banner text-normal bg-weak text-4xl font-bold italic h-36 flex justify-center items-center"
+      class="banner text-normal bg-weak text-4xl font-bold italic h-36 flex justify-center items-center rounded-lg"
     >Banner {{ banner }}</div>
   </section>
 </template>

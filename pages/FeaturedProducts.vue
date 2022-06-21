@@ -4,23 +4,23 @@
     
     <section class="flex flex-col lg:flex-row md:justify-between mb-9 p-6">
       <aside class="lg:w-60 lg:mr-6 mb-6">
-        <h3 class="text-normal bg-weak text-left mb-3 py-1 px-2">FILTERS</h3>
-        <div class="min-price md:inline-block mr-3">
+        <h3 class="text-normal bg-weak text-left mb-3 py-1 px-2 rounded-lg">FILTERS</h3>
+        <div class="min-price md:inline-block lg:block mr-3">
           <label for="min-price">Min price</label>
-          <input type="number" name="min-price" id="min-price" class="block mt-1 pl-1 border border-black" v-model="minPrice" />
+          <input type="number" name="min-price" id="min-price" class="block w-full mt-1 pl-1 border border-black rounded-lg" v-model="minPrice" />
         </div>
 
-        <div class="max-price md:inline-block mr-3">
+        <div class="max-price md:inline-block lg:block mr-3">
           <label for="max-price">Max price</label>
-          <input type="number" name="max-price" id="max-price" class="block mt-1 pl-1 border border-black" v-model="maxPrice" />
+          <input type="number" name="max-price" id="max-price" class="block w-full mt-1 pl-1 border border-black rounded-lg" v-model="maxPrice" />
         </div>
-        <div class="title md:inline-block mr-3">
+        <div class="title md:inline-block lg:block mr-3">
           <label for="title">Title</label>
-          <input type="text" name="title" id="title" class="block mt-1 pl-1 border border-black" v-model="title" />
+          <input type="text" name="title" id="title" class="block w-full mt-1 pl-1 border border-black rounded-lg" v-model="title" />
         </div>
-        <div class="category md:inline-block mr-3">
+        <div class="category md:inline-block lg:block mr-3">
           <label for="category">Category</label>
-          <select name="category" id="category" class="block mt-1 pl-1 border border-black" v-model="category">
+          <select name="category" id="category" class="block w-full mt-1 pl-1 border border-black rounded-lg" v-model="category">
             <option v-for="category in categories" :key="category">{{ category }}</option>
           </select>
         </div>
