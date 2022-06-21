@@ -12,14 +12,14 @@
     </div>
 
     <div class="featured-product__call_to_action text-right flex justify-end items-center">
-      <span class="number-of-items text-2xl">{{ numberOfItems }}</span>
+      <button v-if="!isItemInCart" class="text-white bg-normal font-light p-3 w-full rounded-lg" @click="addToCart(product)">Add to Cart</button>
+      <div v-else class="buttons">
+        <span class="number-of-items text-2xl">{{ numberOfItems }}</span>
 
-      <button v-if="!isItemInCart" class="text-white bg-normal font-light py-4 px-6 ml-3 rounded-lg" @click="addToCart(product)">Add to Cart</button>
-      <div v-else class="buttons ml-3">
-        <button class="text-white bg-normal font-light p-3 rounded-full" @click="addToCart(product)">
+        <button class="text-white bg-normal font-light ml-3 p-2 rounded-full" @click="addToCart(product)">
           <AddIcon />
         </button>
-        <button class="text-normal font-light ml-3 p-3 rounded-full border border-3 border-normal" @click="removeFromCart(product)">
+        <button class="text-normal font-light ml-3 p-2 rounded-full border border-3 border-normal" @click="removeFromCart(product)">
           <RemoveIcon />
         </button>
       </div>

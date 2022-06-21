@@ -32,10 +32,10 @@
       </div>
       <div class="buttons ml-3">
         <span class="number-of-items text-3xl">{{ numberOfItems }}</span>
-        <button class="text-white bg-normal font-light ml-3 p-3 rounded-full" @click="addToCart(product)">
+        <button class="text-white bg-normal font-light ml-3 p-2 rounded-full" @click="addToCart(product)">
           <AddIcon />
         </button>
-        <button class="text-normal font-light ml-3 p-3 rounded-full border border-3 border-normal" @click="removeFromCart(product)">
+        <button class="text-normal font-light ml-3 p-2 rounded-full border border-3 border-normal" @click="removeFromCart(product)">
           <RemoveIcon />
         </button>
       </div>
