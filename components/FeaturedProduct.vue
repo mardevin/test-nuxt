@@ -1,8 +1,8 @@
 <template>
   <div class="featured-product p-3 border-2 border-normal rounded-lg">
-    <div class="featured-product__picture overflow-hidden w-full h-64">
+    <div class="featured-product__picture relative pb-[67%]">
       <NuxtLink :to="`/FeaturedProduct/${product.id}`">
-        <img :src="product.thumbnail" :alt="product.title" class="cursor-pointer w-full h-full object-contain" />
+        <img :src="product.thumbnail" :alt="product.title" class="absolute w-full h-full object-cover cursor-pointer" />
       </NuxtLink>
     </div>
 
