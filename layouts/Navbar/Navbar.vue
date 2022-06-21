@@ -24,13 +24,12 @@
             <li class="inline mx-3">
               <NuxtLink to="/FeaturedProducts">ALL PRODUCTS</NuxtLink>
             </li>
-            <li class="inline mx-3 relative">
+            <li class="relative inline mx-3 p-2">
               <NuxtLink to="/Cart">
                 <ShoppingCartIcon class="inline-block" />
-                <div v-if="!isCartEmpty" class="bg-red-500 absolute right-0.5 bottom-0.5 w-2 h-2 rounded-full"></div>
+                <div v-if="!isCartEmpty" class="text-white bg-red-500 text-[12px] absolute top-0.5 right-0.5 flex justify-center items-center w-3.5 h-3.5 p-2 border border-white rounded-full">{{ cartItems }}</div>
               </NuxtLink>
             </li>
-            <li v-if="!isCartEmpty" class="text-strong font-bold bg-weak text-center inline mx-3">{{ cartItems }} items</li>
           </ul>
         </nav>
         <input type="search" name="search" id="search" class="hidden mlg:inline-block mlg:mb-2 border-2 border-blue-400" />
@@ -50,14 +49,13 @@
             <NuxtLink to="/FeaturedProducts">ALL PRODUCTS</NuxtLink>
           </li>
           <li class="text-center pb-2">
-            <div class="inline-block relative">
+            <div class="relative inline mx-3 p-2">
               <NuxtLink to="/Cart">
                 <ShoppingCartIcon class="inline-block" />
-                <div v-if="!isCartEmpty" class="bg-red-500 absolute right-0.5 bottom-0.5 w-2 h-2 rounded-full"></div>
+                <div v-if="!isCartEmpty" class="text-white bg-red-500 text-[12px] absolute top-0.5 right-0.5 flex justify-center items-center w-3.5 h-3.5 p-2 border border-white rounded-full">{{ cartItems }}</div>
               </NuxtLink>
             </div>
           </li>
-          <li v-if="!isCartEmpty" class="text-strong font-bold bg-weak text-center inline mx-3">{{ cartItems }} items</li>
         </ul>
       </nav>
     </div>
