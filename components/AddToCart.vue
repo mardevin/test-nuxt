@@ -5,7 +5,7 @@
       <span>$ {{ product.price }}</span>
     </div>
 
-    <div class="quantity flex justify-between mb-2">
+    <div class="quantity flex justify-between items-center mb-2">
       <span>Quantity:</span>
       <span class="number-of-items text-2xl">{{ numberOfItems(product) }}</span>
     </div>
