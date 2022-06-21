@@ -1,11 +1,11 @@
 <template>
   <div class="pictures mlg:w-1/2 mb-6">
-    <div class="main-picture overflow-hidden w-full h-72 mb-6">
-      <img :src="product.thumbnail" :alt="product.title" class="w-full h-full object-contain" />
+    <div class="main-picture mb-6 relative pb-[50%]">
+      <img :src="product.thumbnail" :alt="product.title" class="w-full h-full absolute object-cover" />
     </div>
     <div class="other-pictures grid grid-cols-4 sm:grid-cols-2 md:grid-cols-4 gap-6">
-      <div v-for="image in product.images" :key="image" class="picture object-contain">
-        <img :src="image" class="w-full h-full" />
+      <div v-for="image in product.images" :key="image" class="picture relative pb-[80%]">
+        <img :src="image" class="w-full h-full absolute object-cover" />
       </div>
     </div>
   </div> 

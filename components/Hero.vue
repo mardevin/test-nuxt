@@ -1,11 +1,13 @@
 <template>
   <section class="carousel-container relative max-w-full mx-auto mb-12 p-6">
     <div v-for="slide in slides" :key="slide" class="carousel">
-      <div v-show="slide === activeSlide" class="flex flex-col lg:flex-row lg:justify-between lg:items-center">
-        <div class="picture hidden lg:flex lg:justify-center lg:items-center lg:min-w-[50%] lg:min-h-[50%]">
-          <img :src="image" class="mx-auto w-full object-contain" /> 
+      <div v-show="slide === activeSlide" class="lg:flex lg:items-center">
+        <div class="lg:w-1/2">
+          <div class="relative pb-[66%]">
+            <img :src="image" class="h-full w-full object-cover absolute" /> 
+          </div>
         </div>
-        <div class="description lg:text-right lg:max-w-[50%] py-10 px-6">
+        <div class="lg:w-1/2 mt-6 lg:mt-0 lg:px-6">
           <h1 class="text-normal text-3xl sm:text-6xl font-bold mb-8">{{ slide }} Suspendisse interdum rutrum nise.</h1>
           <p class="text-normal text-2xl">Ut tellus quam, venenatis non tempus vitae, volupat blandit libero eget elos</p>
         </div>
