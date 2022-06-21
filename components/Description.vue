@@ -1,5 +1,5 @@
 <template>
-  <div class="description text-normal text-left  mb-6 md:mr-3">
+  <div class="description text-normal text-left max-w-[75%] mb-6 md:mr-3">
     <p class="mb-3">{{ product.description }}</p>
   </div> 
 </template>
