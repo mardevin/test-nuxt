@@ -19,7 +19,7 @@
         </div>
       
         <div class="checkout">
-          <button type="button" class="text-white bg-normal w-full p-3 rounded-md shadow-lg">CHECKOUT ($ {{ subtotal }})</button>
+          <button type="button" class="text-white bg-normal w-full p-3 rounded-lg shadow-lg">CHECKOUT ($ {{ subtotal }})</button>
         </div>
       </div>
     </div>
