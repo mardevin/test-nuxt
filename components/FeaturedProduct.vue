@@ -1,6 +1,6 @@
 <template>
   <div class="featured-product p-3 border-2 border-normal rounded-lg">
-    <div class="featured-product__picture relative pb-[67%]">
+    <div class="featured-product__picture relative pb-[67%] rounded-lg overflow-hidden">
       <NuxtLink :to="`/FeaturedProduct/${product.id}`">
         <img :src="product.thumbnail" :alt="product.title" class="absolute w-full h-full object-cover cursor-pointer" />
       </NuxtLink>
@@ -14,7 +14,7 @@
     <div class="featured-product__call_to_action text-right flex justify-end items-center">
       <span class="number-of-items text-2xl">{{ numberOfItems }}</span>
 
-      <button v-if="!isItemInCart" class="text-white bg-normal font-light py-2 px-6 ml-3 rounded-lg" @click="addToCart(product)">Add to Cart</button>
+      <button v-if="!isItemInCart" class="text-white bg-normal font-light py-4 px-6 ml-3 rounded-lg" @click="addToCart(product)">Add to Cart</button>
       <div v-else class="buttons ml-3">
         <button class="text-white bg-normal font-light p-3 rounded-full" @click="addToCart(product)">
           <AddIcon />
