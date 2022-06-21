@@ -4,7 +4,7 @@
       <div v-show="slide === activeSlide" class="lg:flex lg:items-center">
         <div class="lg:w-1/2">
           <div class="relative pb-[66%]">
-            <img :src="image" class="h-full w-full object-cover absolute" /> 
+            <img :src="image" class="absolute h-full w-full object-cover rounded-lg" /> 
           </div>
         </div>
         <div class="lg:w-1/2 mt-6 lg:mt-0 lg:px-6">

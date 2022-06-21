@@ -17,11 +17,6 @@
         <nav class="hidden mlg:block">
           <ul class="text-normal">
             <li class="inline mx-3">
-              <NuxtLink to="/">
-                <HomeIcon class="inline-block" />
-              </NuxtLink>
-            </li>
-            <li class="inline mx-3">
               <NuxtLink to="/FeaturedProducts">ALL PRODUCTS</NuxtLink>
             </li>
             <li class="relative inline mx-3 p-2">
@@ -32,19 +27,14 @@
             </li>
           </ul>
         </nav>
-        <input type="search" name="search" id="search" class="hidden mlg:inline-block mlg:mb-2 border-2 border-blue-400" />
+        <input type="search" name="search" id="search" class="hidden mlg:inline-block mlg:mb-2 border-2 border-blue-400 rounded-lg" />
       </div>
 
       <nav v-if="showDropdownMenu" class=" text-center mlg:hidden">
         <div class="search">
-          <input type="search" name="search" id="search" class="mb-2 border-2 border-normal" />
+          <input type="search" name="search" id="search" class="mb-2 border-2 border-normal rounded-lg" />
         </div>
         <ul class="text-normal mb-2">
-          <li>
-            <NuxtLink to="/">
-              <HomeIcon class="inline-block" />
-            </NuxtLink>
-          </li>
           <li>
             <NuxtLink to="/FeaturedProducts">ALL PRODUCTS</NuxtLink>
           </li>
