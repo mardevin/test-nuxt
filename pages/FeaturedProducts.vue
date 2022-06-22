@@ -30,8 +30,11 @@
         </div>
       </aside>
 
-      <div v-if="thereAreProductsAvailable" class="featured-products flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <FeaturedProduct v-for="product in filteredProducts" :key="product.id" :product="product" />
+      <div v-if="thereAreProductsAvailable" class="featured-products flex-1">
+        <div class="featured-products-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <FeaturedProduct v-for="product in filteredProducts" :key="product.id" :product="product" />
+        </div>
+
       </div>
 
       <div v-else class="text-3xl text-center w-full">
@@ -78,6 +81,8 @@ const categories = [
   "lighting"
 ];
 
+// const productsPerPage = ref(12);
+// const activePage = ref(1);
 const featuredProducts = computed(() => store.getProducts);
 const filteredProducts = computed(() => featuredProducts.value.filter((product) => doesRespondToFiltersCriterias(product)));
 const thereAreProductsAvailable = computed(() => filteredProducts.value.length !== 0);

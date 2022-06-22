@@ -11,7 +11,7 @@ import Footer from '~/layouts/Footer/Footer.vue';
 
 const store = useStore();
 
-const { data } = await useFetch('https://dummyjson.com/products');
+const { data } = await useFetch('https://dummyjson.com/products?limit=100');
 store.setProducts(data.value.products);
 
 useHead({
