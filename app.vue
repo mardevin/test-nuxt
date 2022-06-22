@@ -9,7 +9,6 @@ import { useStore } from '~/stores/store';
 import Navbar from '~/layouts/Navbar/Navbar.vue';
 import Footer from '~/layouts/Footer/Footer.vue';
 
-
 const store = useStore();
 
 const { data } = await useFetch('https://dummyjson.com/products');

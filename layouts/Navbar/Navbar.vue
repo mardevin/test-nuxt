@@ -27,15 +27,34 @@
             </li>
           </ul>
         </nav>
-        <input type="search" list="products" name="search" id="search" class="hidden mlg:inline-block mlg:mb-2 border-2 border-blue-400 rounded-lg" @input="searchProducts" :value="searchInput" />
-        <datalist id="products">
-          <option v-for="product in searchResults" :key="product.id" @click="goToProductPage(product.id)" @keypress.enter="goToProductPage(product.id)">{{ product.title }}</option>
-        </datalist>
+        <div class="search-products hidden mlg:block">
+          <input type="search" name="search" id="search" ref="searchField" class="border-2 border-normal rounded-lg" @input="searchProducts" :value="searchInput" />
+          <div class="products bg-white fixed max-h-[22rem] overflow-scroll">
+            <NuxtLink v-for="product in searchResults" :key="product.id" :to="`/FeaturedProduct/${product.id}`" class="product flex py-1 px-3 border" @keypress.esc="focusOnSearchField">
+              <div class="product-image relative inline-block w-16 mr-3 pb-[17%]">
+                <img :src="product.thumbnail" :alt="product.title" class="absolute w-full h-full object-cover" />
+              </div>
+              <div class="product-title inline-block">
+                {{ product.title }}
+              </div>
+            </NuxtLink>  
+          </div>
+        </div>
       </div>
 
-      <nav v-if="showDropdownMenu" class=" text-center mlg:hidden">
-        <div class="search">
-          <input type="search" name="search" id="search" class="mb-2 border-2 border-normal rounded-lg" />
+      <nav v-if="showDropdownMenu" class="text-center mlg:hidden">
+        <div class="search-products">
+          <input type="search" name="search" id="search" class="mb-2 border-2 border-normal rounded-lg" @input="searchProducts" :value="searchInput" />
+          <div class="products bg-white fixed sm:left-1/4 max-h-[22rem] overflow-scroll">
+            <NuxtLink v-for="product in searchResults" :key="product.id" :to="`/FeaturedProduct/${product.id}`" class="product flex py-1 px-3 border">
+              <div class="product-image relative inline-block w-16 mr-3 pb-[17%]">
+                <img :src="product.thumbnail" :alt="product.title" class="absolute w-full h-full object-cover" />
+              </div>
+              <div class="product-title inline-block">
+                {{ product.title }}
+              </div>
+            </NuxtLink>  
+          </div>
         </div>
         <ul class="text-normal mb-2">
           <li>
@@ -64,9 +83,9 @@ import ShoppingCartIcon from '~/assets/icons/shopping-cart.svg';
 import axios from 'axios';
 
 const store = useStore();
-const router = useRouter();
 
 const showDropdownMenu = ref(false);
+const searchField = ref(null);
 const searchInput = ref('');
 const searchResults = ref([]);
 const cartItems = computed(() => store.getNumberOfCartItems);
@@ -79,17 +98,28 @@ function toggleShowDropdownMenu() {
 async function searchProducts(e) {
   searchInput.value = e.target.value;
 
+  if (searchInput.value === '') {
+    searchResults.value = [];
+    return;
+  }
+
   const url = `https://dummyjson.com/products/search?q=${searchInput.value}`;
 
   try {
     const { data } = await axios.get(url);
+
     searchResults.value = data.products;
   } catch (error) {
     store.setError(error.response.data.message);
   }
 }
 
-function goToProductPage(id: string) {
-  router.push(`/FeaturedProduct/${id}`);
+function resetSearchInput() {
+  console.log('passed?')
+  searchInput.value = '';
+}
+
+function focusOnSearchField() {
+  searchField.value.focus();
 }
 </script>

@@ -108,6 +108,7 @@ export const useStore = defineStore('store', {
     [Actions.LOGOUT]() {
       this.$patch({
         user: {},
+        error: '',
       });
 
       localStorage.removeItem('userId');

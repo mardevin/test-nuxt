@@ -43,9 +43,11 @@ async function login() {
   }
 }
 
-onMounted(async () => {
+onBeforeMount(redirectToHomePageIfUserAuthenticated);
+
+async function redirectToHomePageIfUserAuthenticated() {
   if (await store.verifyAuth()) {
     router.push('/');
   }
-})
+}
 </script>
