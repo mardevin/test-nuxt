@@ -43,7 +43,7 @@ const bannersPerPage = 3;
 const { data } = await useFetch('https://dummyjson.com/products/categories');
 banners.value = data.value as Category[];
 
-const pages = computed(() => Math.ceil(banners.value.length / 3));
+const pages = computed(() => Math.ceil(banners.value.length / bannersPerPage));
 const bannersToShow = computed(() => banners.value.slice(activePage.value * bannersPerPage - bannersPerPage, activePage.value * bannersPerPage));
 
 function goToFeaturedProductsPage(category: Category) {

@@ -31,10 +31,39 @@
       </aside>
 
       <div v-if="thereAreProductsAvailable" class="featured-products flex-1">
-        <div class="featured-products-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <FeaturedProduct v-for="product in filteredProducts" :key="product.id" :product="product" />
+        <div class="featured-products-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+          <FeaturedProduct v-for="product in productsToDisplay" :key="product.id" :product="product" />
         </div>
 
+        <div class="pagination text-center flex justify-between items-center">
+          <span tabindex="0" class="text-normal flex justify-center items-center w-8 h-8 border-2 border-normal rounded-full cursor-pointer" @click="previousPage" @keypress.enter="previousPage">
+
+            <!-- <LeftArrowIcon class="w-full h-full" @click="previousPage" /> -->
+            <span class="material-icons">arrow_back</span>
+          </span>
+          
+          <div class="pages">
+            <span 
+              v-for="page in pages" 
+              :key="page" 
+              tabindex="0"
+              class="dot text-white bg-normal text-2xl font-bold hover:bg-normal inline-flex justify-center align-center w-8 h-8 mx-2 rounded-full cursor-pointer"
+              :class="{
+                'bg-strong': activePage === page
+              }"
+              @click="activePage = page"
+              @keypress.enter="activePage = page"
+              @keypress.space.prevent="activePage = page"
+            >{{ page }}</span>
+          </div>
+
+          <span tabindex="0" class="text-normal flex justify-center items-center w-8 h-8 border-2 border-normal rounded-full cursor-pointer" @click="nextPage" @keypress.enter="nextPage">
+
+            <!-- <LeftArrowIcon class="w-full h-full" @click="previousPage" /> -->
+            <span class="material-icons">arrow_forward</span>
+          </span>
+          <!-- <RightArrowIcon class="inline-block" @click="nextPage" /> -->
+        </div>
       </div>
 
       <div v-else class="text-3xl text-center w-full">
@@ -48,6 +77,8 @@
 import { useStore } from '~/stores/store';
 import { ref, computed } from 'vue';
 import { Product } from '~~/stores/types/types';
+import LeftArrowIcon from '~/assets/icons/left-arrow.svg';
+import RightArrowIcon from '~/assets/icons/right-arrow.svg';
 
 const store = useStore();
 const route = useRoute();
@@ -81,13 +112,19 @@ const categories = [
   "lighting"
 ];
 
-// const productsPerPage = ref(12);
-// const activePage = ref(1);
+const productsPerPage = 12;
+const activePage = ref(1);
 const featuredProducts = computed(() => store.getProducts);
 const filteredProducts = computed(() => featuredProducts.value.filter((product) => doesRespondToFiltersCriterias(product)));
+const pages = computed(() => Math.ceil(filteredProducts.value.length / productsPerPage))
+const isFirstPage = computed(() => activePage.value === 1);
+const isLastPage = computed(() => activePage.value === pages.value);
+const productsToDisplay = computed(() => filteredProducts.value.slice(productsPerPage * activePage.value - productsPerPage, productsPerPage * activePage.value));
 const thereAreProductsAvailable = computed(() => filteredProducts.value.length !== 0);
 
 function doesRespondToFiltersCriterias(product: Product) {
+  resetToFirstPage();
+
   return isPriceBiggerThanMinPrice(product) 
   && isPriceSmallerThanMaxPrice(product) 
   && containsTextWithinTitle(product)
@@ -109,6 +146,26 @@ function containsTextWithinTitle(product: Product) {
 
 function belongsToCategory(product: Product) {
   return category.value === 'all' || product.category === category.value;
+}
+
+function resetToFirstPage() {
+  activePage.value = 1;
+}
+
+function nextPage() {
+  if (isLastPage.value) {
+    activePage.value = 1;
+  } else {
+    activePage.value++;
+  }
+}
+
+function previousPage() {
+  if (isFirstPage.value) {
+    activePage.value = pages.value;
+  } else {
+    activePage.value--;
+  }
 }
 
 onMounted(() => {
