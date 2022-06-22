@@ -35,10 +35,8 @@
           <FeaturedProduct v-for="product in productsToDisplay" :key="product.id" :product="product" />
         </div>
 
-        <div class="pagination text-center flex justify-between items-center">
+        <div class="pagination text-center flex sm:justify-between sm:items-center">
           <span tabindex="0" class="text-normal flex justify-center items-center w-8 h-8 border-2 border-normal rounded-full cursor-pointer" @click="previousPage" @keypress.enter="previousPage">
-
-            <!-- <LeftArrowIcon class="w-full h-full" @click="previousPage" /> -->
             <span class="material-icons">arrow_back</span>
           </span>
           
@@ -47,7 +45,7 @@
               v-for="page in pages" 
               :key="page" 
               tabindex="0"
-              class="dot text-white bg-normal text-2xl font-bold hover:bg-normal inline-flex justify-center align-center w-8 h-8 mx-2 rounded-full cursor-pointer"
+              class="dot text-white bg-normal text-2xl font-bold hover:bg-normal inline-flex justify-center align-center w-8 h-8 mx-2 rounded-full shadow-2xl cursor-pointer"
               :class="{
                 'bg-strong': activePage === page
               }"
@@ -58,11 +56,8 @@
           </div>
 
           <span tabindex="0" class="text-normal flex justify-center items-center w-8 h-8 border-2 border-normal rounded-full cursor-pointer" @click="nextPage" @keypress.enter="nextPage">
-
-            <!-- <LeftArrowIcon class="w-full h-full" @click="previousPage" /> -->
             <span class="material-icons">arrow_forward</span>
           </span>
-          <!-- <RightArrowIcon class="inline-block" @click="nextPage" /> -->
         </div>
       </div>
 
@@ -77,8 +72,6 @@
 import { useStore } from '~/stores/store';
 import { ref, computed } from 'vue';
 import { Product } from '~~/stores/types/types';
-import LeftArrowIcon from '~/assets/icons/left-arrow.svg';
-import RightArrowIcon from '~/assets/icons/right-arrow.svg';
 
 const store = useStore();
 const route = useRoute();

@@ -12,7 +12,7 @@
     </div>
 
     <div class="featured-product__call_to_action text-right flex justify-end items-center">
-      <button v-if="!isItemInCart" class="text-white bg-normal font-light p-3 w-full rounded-lg" @click="addToCart(product)">Add to Cart</button>
+      <button v-if="!isItemInCart" class="text-white bg-normal hover:bg-strong font-light p-3 w-full rounded-lg" @click="addToCart(product)">Add to Cart</button>
       <div v-else class="buttons">
         <span class="number-of-items text-2xl">{{ numberOfItems }}</span>
 
