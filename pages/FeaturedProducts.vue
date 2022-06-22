@@ -21,6 +21,7 @@
         <div class="category md:inline-block lg:block mr-3">
           <label for="category">Category</label>
           <!-- <input type="text" name="category" list="category" class="block w-full mt-1 pl-1 border border-black rounded-lg" v-model="category">
+          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
           <datalist id="category">
             <option v-for="category in categories" :key="category" :value="category" />
           </datalist> -->
