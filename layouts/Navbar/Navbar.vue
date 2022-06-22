@@ -27,7 +27,10 @@
             </li>
           </ul>
         </nav>
-        <input type="search" name="search" id="search" class="hidden mlg:inline-block mlg:mb-2 border-2 border-blue-400 rounded-lg" />
+        <input type="search" list="products" name="search" id="search" class="hidden mlg:inline-block mlg:mb-2 border-2 border-blue-400 rounded-lg" @input="searchProducts" :value="searchInput" />
+        <datalist id="products">
+          <option v-for="product in searchResults" :key="product.id" @click="goToProductPage(product.id)" @keypress.enter="goToProductPage(product.id)">{{ product.title }}</option>
+        </datalist>
       </div>
 
       <nav v-if="showDropdownMenu" class=" text-center mlg:hidden">
@@ -52,21 +55,41 @@
   </header>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { useStore } from '~/stores/store';
 import { ref, computed } from 'vue';
 import SportsBaseballIcon from '~/assets/icons/sports-baseball.svg';
 import MenuIcon from '~/assets/icons/menu.svg';
-import HomeIcon from '~/assets/icons/home.svg';
 import ShoppingCartIcon from '~/assets/icons/shopping-cart.svg';
+import axios from 'axios';
 
 const store = useStore();
+const router = useRouter();
 
 const showDropdownMenu = ref(false);
+const searchInput = ref('');
+const searchResults = ref([]);
 const cartItems = computed(() => store.getNumberOfCartItems);
 const isCartEmpty = computed(() => cartItems.value === 0);
 
 function toggleShowDropdownMenu() {
   showDropdownMenu.value = !showDropdownMenu.value;
+}
+
+async function searchProducts(e) {
+  searchInput.value = e.target.value;
+
+  const url = `https://dummyjson.com/products/search?q=${searchInput.value}`;
+
+  try {
+    const { data } = await axios.get(url);
+    searchResults.value = data.products;
+  } catch (error) {
+    store.setError(error.response.data.message);
+  }
+}
+
+function goToProductPage(id: string) {
+  router.push(`/FeaturedProduct/${id}`);
 }
 </script>

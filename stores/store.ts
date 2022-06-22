@@ -38,9 +38,7 @@ export const useStore = defineStore('store', {
 
         localStorage.setItem('userId', user.id);
       } catch (error) {
-        this.$patch({
-          error: error.response.data,
-        })
+        this.setError(error.response.data.message)
       }
     },
     async [Actions.FETCH_PRODUCTS]() {
@@ -51,9 +49,7 @@ export const useStore = defineStore('store', {
           error: '',
         })
       } catch (error) {
-        this.$patch({
-          error: error.response.data,
-        })
+        this.setError(error.response.data.message)
       }
     },
     async [Actions.SET_PRODUCTS](data: Product[]) {
@@ -105,9 +101,7 @@ export const useStore = defineStore('store', {
         localStorage.setItem('userId', user.id);
         return true;
       } catch (error) {
-        this.$patch({
-          error: error.response.data.message
-        });
+        this.setError(error.response.data.message)
         return false;
       }
     },
@@ -117,6 +111,11 @@ export const useStore = defineStore('store', {
       });
 
       localStorage.removeItem('userId');
-    }
+    },
+    [Actions.SET_ERROR](error: string) { 
+      this.$patch({
+        error,
+      })
+     }
   },
 })
