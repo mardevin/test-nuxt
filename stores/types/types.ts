@@ -1,7 +1,19 @@
 export type StoreState = {
+  user: User;
   products: Product[];
   cart: CartItem[];
   error: string;
+}
+
+export type User = {
+  id: number;
+  username: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  gender: Gender;
+  image: string;
+  token: string;
 }
 
 export type Product = {
@@ -44,3 +56,10 @@ type CartItem = {
   product: Product;
   numberOfItems: number;
 }
+
+export type LoginCredentials = {
+  username: string;
+  password: string;
+}
+
+type Gender = 'male' | 'female' | 'other';

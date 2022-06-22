@@ -1,16 +1,19 @@
 import { defineStore } from 'pinia';
 import { Actions } from './enums/actions';
-import { Product, StoreState } from './types/types';
+import { LoginCredentials, Product, StoreState } from './types/types';
+import { http } from '~/config/axiosConfig';
 
 export const useStore = defineStore('store', {
   state: () => {
     return {
+      user: {},
       products: [],
       cart: [],
       error: '',
     } as StoreState
   },
   getters: {
+    getIsUserAuthenticated: (state) => !!state.user.token,
     getProducts: (state) => state.products,
     getCart: (state) => state.cart,
     getNumberOfCartItems: (state) => state.cart.reduce((acc, cartItem) => acc + cartItem.numberOfItems, 0),
@@ -25,11 +28,39 @@ export const useStore = defineStore('store', {
     getError: (state) => state.error,
   },
   actions: {
-    async [Actions.SET_PRODUCTS](data: Product[]) {
-      this.$patch({
-        products: data
-      })
+    async [Actions.LOGIN](loginCredentials: LoginCredentials) {
+      try {
+        const { data: user } = await http.post('auth/login', loginCredentials);
+        this.$patch({
+          user,
+          error: '',
+        })
+
+        localStorage.setItem('userId', user.id);
+      } catch (error) {
+        this.$patch({
+          error: error.response.data,
+        })
+      }
     },
+    async [Actions.FETCH_PRODUCTS]() {
+      try {
+        const { data: { products } } = await http.get('products');
+        this.$patch({
+          products,
+          error: '',
+        })
+      } catch (error) {
+        this.$patch({
+          error: error.response.data,
+        })
+      }
+    },
+    // async [Actions.SET_PRODUCTS](data: Product[]) {
+    //   this.$patch({
+    //     products: data
+    //   })
+    // },
     [Actions.ADD_TO_CART](item: Product) {
       const foundItem = this.cart.find((cartItem) => cartItem.product.id === item.id);
 
@@ -55,6 +86,37 @@ export const useStore = defineStore('store', {
     },
     [Actions.REMOVE_PRODUCT_FROM_CART](product: Product) {
       this.cart = this.cart.filter((cartItem) => cartItem.product.id !== product.id);
+    },
+    async [Actions.VERIFY_AUTH]() {
+      if (localStorage.getItem('userId') === null) {
+        this.logout();
+        return false;
+      }
+
+      const userId = localStorage.getItem('userId');
+
+      try {
+        const { data: user } = await http.get(`users/${userId}`);
+        this.$patch({
+          user,
+          error: '',
+        });
+
+        localStorage.setItem('userId', user.id);
+        return true;
+      } catch (error) {
+        this.$patch({
+          error: error.response.data.message
+        });
+        return false;
+      }
+    },
+    [Actions.LOGOUT]() {
+      this.$patch({
+        user: {},
+      });
+
+      localStorage.removeItem('userId');
     }
   },
 })
