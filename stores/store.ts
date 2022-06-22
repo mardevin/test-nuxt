@@ -56,11 +56,11 @@ export const useStore = defineStore('store', {
         })
       }
     },
-    // async [Actions.SET_PRODUCTS](data: Product[]) {
-    //   this.$patch({
-    //     products: data
-    //   })
-    // },
+    async [Actions.SET_PRODUCTS](data: Product[]) {
+      this.$patch({
+        products: data
+      })
+    },
     [Actions.ADD_TO_CART](item: Product) {
       const foundItem = this.cart.find((cartItem) => cartItem.product.id === item.id);
 

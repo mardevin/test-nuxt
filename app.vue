@@ -12,13 +12,16 @@ import Footer from '~/layouts/Footer/Footer.vue';
 
 const store = useStore();
 
-onMounted(async () => {
-  try {
-    await store.fetchProducts();
-  } catch (error) {
-    console.log(error);
-  }
-})
+const { data } = await useFetch('https://dummyjson.com/products');
+store.setProducts(data.value.products);
+
+// onMounted(async () => {
+//   try {
+//     await store.fetchProducts();
+//   } catch (error) {
+//     console.log(error);
+//   }
+// })
 
 useHead({
   link: [
