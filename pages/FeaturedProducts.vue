@@ -1,6 +1,6 @@
 <template>
   <main class="max-w-screen-xl mx-auto">
-    <Category />
+    <Category :category="category" />
     
     <section class="flex flex-col lg:flex-row md:justify-between mb-9 p-6">
       <aside class="lg:w-60 lg:mr-6 mb-6">
@@ -20,13 +20,13 @@
         </div>
         <div class="category md:inline-block lg:block mr-3">
           <label for="category">Category</label>
-          <input type="text" name="category" list="category" class="block w-full mt-1 pl-1 border border-black rounded-lg" v-model="category">
+          <!-- <input type="text" name="category" list="category" class="block w-full mt-1 pl-1 border border-black rounded-lg" v-model="category">
           <datalist id="category">
             <option v-for="category in categories" :key="category" :value="category" />
-          </datalist>
-          <!-- <select name="category" id="category" class="block w-full mt-1 pl-1 border border-black rounded-lg" v-model="category">
+          </datalist> -->
+          <select name="category" id="category" class="block w-full mt-1 pl-1 border border-black rounded-lg" v-model="category">
             <option v-for="category in categories" :key="category">{{ category }}</option>
-          </select> -->
+          </select>
         </div>
       </aside>
 
