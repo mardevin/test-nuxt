@@ -30,7 +30,7 @@
         <div class="search-products hidden mlg:block">
           <input type="search" name="search" id="search" ref="searchField" class="border-2 border-normal rounded-lg" @input="searchProducts" :value="searchInput" />
           <div class="products bg-white fixed max-h-[22rem] overflow-scroll">
-            <NuxtLink v-for="product in searchResults" :key="product.id" :to="`/FeaturedProduct/${product.id}`" class="product flex py-1 px-3 border" @keypress.esc="focusOnSearchField">
+            <NuxtLink v-for="product in searchResults" :key="product.id" :to="`/FeaturedProduct/${product.id}`" class="product flex py-1 px-3 border" @keydown.esc="focusOnSearchField">
               <div class="product-image relative inline-block w-16 mr-3 pb-[17%]">
                 <img :src="product.thumbnail" :alt="product.title" class="absolute w-full h-full object-cover" />
               </div>
@@ -112,11 +112,6 @@ async function searchProducts(e) {
   } catch (error) {
     store.setError(error.response.data.message);
   }
-}
-
-function resetSearchInput() {
-  console.log('passed?')
-  searchInput.value = '';
 }
 
 function focusOnSearchField() {
