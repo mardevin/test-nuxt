@@ -30,8 +30,12 @@
         </div>
       </aside>
 
-      <div class="featured-products flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div v-if="thereAreProductsAvailable" class="featured-products flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <FeaturedProduct v-for="product in filteredProducts" :key="product.id" :product="product" />
+      </div>
+
+      <div v-else class="text-3xl text-center w-full">
+        Sorry, but there are currently no products that fulfill the desired criteria.
       </div>
     </section>
   </main>
@@ -76,6 +80,7 @@ const categories = [
 
 const featuredProducts = computed(() => store.getProducts);
 const filteredProducts = computed(() => featuredProducts.value.filter((product) => doesRespondToFiltersCriterias(product)));
+const thereAreProductsAvailable = computed(() => filteredProducts.value.length !== 0);
 
 function doesRespondToFiltersCriterias(product: Product) {
   return isPriceBiggerThanMinPrice(product) 
