@@ -1,6 +1,6 @@
 <template>
   <section class="carousel-container relative max-w-full mx-auto mb-12 p-6">
-    <div v-for="slide in slides" :key="slide" class="carousel">
+    <div v-for="slide in slides" :key="slide" class="carousel mb-6">
       <div v-show="slide === activeSlide" class="lg:flex lg:items-center">
         <div class="lg:w-1/2">
           <div class="relative pb-[66%]">
@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <div class="dots text-center mt-6">
+    <div class="dots text-center">
       <span 
         v-for="slide in slides" 
         :key="slide" 
