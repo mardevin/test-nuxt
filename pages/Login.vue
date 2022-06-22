@@ -39,7 +39,7 @@ async function login() {
     await store.login(loginCredentials);
     router.push('/');
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
   }
 }
 

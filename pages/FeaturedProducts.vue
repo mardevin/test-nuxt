@@ -20,9 +20,13 @@
         </div>
         <div class="category md:inline-block lg:block mr-3">
           <label for="category">Category</label>
-          <select name="category" id="category" class="block w-full mt-1 pl-1 border border-black rounded-lg" v-model="category">
+          <input type="text" name="category" list="category" class="block w-full mt-1 pl-1 border border-black rounded-lg" v-model="category">
+          <datalist id="category">
+            <option v-for="category in categories" :key="category" :value="category" />
+          </datalist>
+          <!-- <select name="category" id="category" class="block w-full mt-1 pl-1 border border-black rounded-lg" v-model="category">
             <option v-for="category in categories" :key="category">{{ category }}</option>
-          </select>
+          </select> -->
         </div>
       </aside>
 
@@ -39,6 +43,7 @@ import { ref, computed } from 'vue';
 import { Product } from '~~/stores/types/types';
 
 const store = useStore();
+const route = useRoute();
 
 const minPrice = ref(0);
 const maxPrice = ref(0);
@@ -95,6 +100,14 @@ function containsTextWithinTitle(product: Product) {
 function belongsToCategory(product: Product) {
   return category.value === 'all' || product.category === category.value;
 }
+
+onMounted(() => {
+  const categoryQuery = route.query['category'] as string;
+  
+  if (categoryQuery !== undefined) {
+    category.value = categoryQuery;
+  }
+})
 
 useHead({
   title: 'Featured products',

@@ -30,7 +30,7 @@ export type Product = {
   brand: string;
 }
 
-type Category =
+export type Category =
   "smartphones"|
   "laptops"|
   "fragrances"|
